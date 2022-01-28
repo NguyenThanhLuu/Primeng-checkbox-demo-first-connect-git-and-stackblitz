@@ -1,0 +1,28 @@
+<h4>Execuse data when click checkbox or radio button</h4>
+<button
+  pButton
+  type="button"
+  label="Submit"
+  icon="pi pi-check"
+  [disabled]="!this.selectedCheckbox[0] && this.selectedRadio.length === 0"
+  (click)="handleSubmit()"
+></button>
+&nbsp;
+<button (click)="handleCheckbox()">Submit checkbox</button>
+<div *ngFor="let category of categoriesCheckbox" class="p-field-checkbox">
+  <p-checkbox
+    [value]="category"
+    [(ngModel)]="selectedCheckbox"
+    [inputId]="category.key"
+    [disabled]="category.key === 'M'"
+  ></p-checkbox
+  >&nbsp;
+  <p-radioButton
+    [inputId]="category.key"
+    name="category"
+    [value]="category"
+    [(ngModel)]="selectedRadio"
+    [disabled]="category.key === 'R'"
+  ></p-radioButton>
+  <label [for]="category.key">{{ category.name }}</label>
+</div>
